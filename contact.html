@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Contact Me</title>
+
+</head>
+<body>
+    <div class="header">       
+        <nav>
+            <div class="home-button">
+            <h1><a href="/index.html">Nathan T Butler</a></h1>
+            </div>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/portfolio.html">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://www.instagram.com/nathanreltub/">Instagram</a></li>
+            </ul>
+            
+        </nav>
+        
+<!---------------------------ContactForm------------------->
+    <div id ="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <div class="sub-title">
+                        <h1>Contact Me</h1>
+                    </div>
+                    
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="button">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+<footer>
+        <div class="copyright">
+            <p>Website created by Noah Butler 2022  </p>
+        </div>
+    </div>
+</footer>
+
+    <!--Cool Typing Effect Script-->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var typed = new Typed(".auto-input", {
+            strings: ["Contact Me"], typeSpeed: 100,
+            backSpeed: 100,
+            loop: true
+        })
+    </script>
+
+
+    <!-------------------Email Script----------------->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyDmhskt09Ux89ttVbnDh36kEk6GDTJA-n1xRX57E3pjeRUM9K2wjLLqjbOwAdb0CgY/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg");
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message Sent Successfully"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+    
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
