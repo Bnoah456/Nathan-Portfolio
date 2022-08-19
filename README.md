@@ -1,4 +1,5 @@
 # Nathan-Portfolio
 
-Personal portfolio project
-A project for my twin brother! his Photography page
+Portfolio Website
+A portfolio made for my twin brother! 
+Website: https://nathanbutler.cyou/
